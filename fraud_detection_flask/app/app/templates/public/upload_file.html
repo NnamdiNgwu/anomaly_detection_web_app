@@ -1,0 +1,66 @@
+<!-- extends base template -->
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Track Transaction{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Upload Transaction file</h2>
+            <hr>
+            <form action="/upload-file" method="POST" enctype="multipart/form-data" >
+
+                <div class="form-group">
+                    <label>Select file</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="file" id="file" placeholder="csv file">
+                        <label class="custom-file-label" for="file">Select CSV..</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary"> Make Prediction</button>
+            </form>
+            <hr>
+            <h1>{{predictions}}</h1>
+            <br>
+            <!-- display prediction result in different table cells to monitor model performance -->
+            {% for pred in predictions %}
+            {% if pred ==1 %}
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">This Transaction is Fraud</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                   <td><h1>{{frd}}</h1></td>
+                </tr>
+                </tbody>
+                <br>
+               {% elif pred==0 %}
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">This Transaction is not Fraud</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                       <td><h1>{{nonfrd}}</h1></td>
+                    </tr>
+                    </tbody>
+            </table>
+            {% endif %}
+            {% endfor %}
+            <h1>{{proba_pred}}</h1>
+        </div>
+    </div>
+</div>
+{% endblock  %}

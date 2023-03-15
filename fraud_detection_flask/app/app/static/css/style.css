@@ -1,0 +1,31 @@
+h1{color:rgb(156, 34, 0);
+    font-size:50px;}
+
+h2{color:chocolate}
+    
+body{
+    background-size: cover;
+    width:80%; /*width of the web page */
+    margin:auto; /* left and right border */
+    padding:50px;   /*top or bottom border */
+    text-align:center;
+    font-size:large;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color:black;
+}
+
+input,button{
+    background-color: silver;
+    padding: 10px;     
+    font-size: inherit;
+    font-family: inherit;
+}
+
+button{color:rgb(150, 139, 75);
+    font-style: italic;
+    font-size: 20px;
+    transition: all 3s;
+
+}
+
+button:hover{color: rgb(165, 42, 163)}
