@@ -1,4 +1,6 @@
 from app import app
+import csv
+import numpy as np
 from flask import render_template, redirect, request,\
       flash, url_for
 import os
@@ -54,7 +56,7 @@ def file_upload():
            if file  and allowed_file(file.filename): 
                filename = secure_filename(file.filename) #secure filename
                
-               with open('credit_card_fraud_model.pkl', 'rb') as file_to_pred:
+               with open('./app/cc_fraud_model.pkl', 'rb') as file_to_pred:
                    model = pickle.load(file_to_pred) 
                    df = pd.read_csv(file)
                    predictions = model.predict(df)
